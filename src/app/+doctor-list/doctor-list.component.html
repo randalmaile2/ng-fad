@@ -1,0 +1,40 @@
+<ul class="doctors">
+  <h1>Doctors List</h1>
+  <li *ngFor="let doctor of doctors">
+    <p>Need miles away field - logic in component</p>
+    <h2>{{doctor.Salutation}} {{doctor.FirstName}} {{doctor.LastName}} </h2>
+
+    <span [ngSwitch]="doctor.Photo">
+      <img *ngSwitchCase="''" src="//images.sharp.com/doctors/no_doc_image.png" alt="">
+      <img *ngSwitchDefault src="//images.sharp.com/doctors/{{doctor.Photo}}" alt="">
+    </span>
+
+    <a href="" (click)="onSelect(doctor.PhysicianIDNumber)">View Profile</a>
+    <div class="large-cta">
+      Specialty - use pluralize filter
+    </div>
+    <ul>
+      <li *ngFor="let specialty of doctor.Specialties">{{specialty.Specialty}}</li>
+    </ul>
+
+    <ul>
+      <li *ngFor="let school of doctor.Schools | doctorPipe">{{school.School}}</li>
+    </ul>
+
+    <div *ngFor="let location of doctor.Locations">
+      <div>
+        <a class="location-phone" attr.data-analytics-label="{{doctor.Salutation}} {{doctor.FirstName}} {{doctor.LastName}}" href="tel:+1enterdoctorPhonestripped">{{location.Phone}}</a>
+      </div>
+      <address>
+        <span>{{location.Address}}, {{location.SuiteNumber}}</span>
+        <span>{{location.City}}</span>
+        <span>{{location.ZipCode}}</span>
+      </address>
+    </div>
+
+    <div>
+      <a href="">Get Directions</a>
+    </div>
+  </li>
+</ul>
+<resource-list></resource-list>

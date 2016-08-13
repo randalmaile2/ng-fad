@@ -37,6 +37,7 @@ const barrels: string[] = [
   'app/doctor-list',
   'app/doctor-profile',
   'app/test',
+  'app/filterx',
   /** @cli-barrel */
 ];
 
